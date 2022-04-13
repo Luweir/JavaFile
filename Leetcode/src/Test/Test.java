@@ -8,10 +8,13 @@ import java.util.stream.StreamSupport;
 
 
 public class Test {
+    public static void test() {
+        System.out.println(111);
+    }
 
     public static void main(String[] args) {
-        int size=4;
-        Random random=new Random();
+        int size = 4;
+        Random random = new Random();
         System.out.println(random.nextInt(size));
     }
 }
