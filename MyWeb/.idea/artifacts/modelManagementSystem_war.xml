@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="modelManagementSystem:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/modelManagementSystem_war</output-path>
+    <root id="archive" name="modelManagementSystem_war.war">
+      <element id="artifact" artifact-name="modelManagementSystem:war exploded" />
+    </root>
+  </artifact>
+</component>
