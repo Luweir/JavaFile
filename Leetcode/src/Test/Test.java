@@ -26,7 +26,8 @@ public class Test extends Thread {
             cnt++;
             condition.signal();
             try {
-                condition.await();
+                if (cnt <= 100)
+                    condition.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
