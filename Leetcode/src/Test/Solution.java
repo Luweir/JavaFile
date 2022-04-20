@@ -1,51 +1,36 @@
 package Test;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+import java.util.*;
 
 public class Solution {
-    public void recoverTree(TreeNode root) {
-        if (root == null)
-            return;
-        Stack<TreeNode> stack = new Stack<>();
-        List<TreeNode> nodeList = new LinkedList<>();
-        // 得到中序遍历
-        while (!stack.isEmpty() || root != null) {
-            if (root != null ) {
-                stack.add(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            nodeList.add(root);
-            root = root.right;
+    public int numDistinct(String s, String t) {
+        if (s == null || s.length() == 0)
+            return 0;
+        int[][] cache = new int[s.length()][t.length()];
+        for (int i = 0; i < cache.length; i++) {
+            Arrays.fill(cache[i], -1);
         }
-        int p1 = 0, p2 = nodeList.size() - 1;
-        while (p1 < p2 && nodeList.get(p1).val <= nodeList.get(p1 + 1).val)
-            p1++;
-        while (p1 < p2 && nodeList.get(p2).val >= nodeList.get(p2 - 1).val)
-            p2--;
-        int temp = nodeList.get(p1).val;
-        nodeList.get(p1).val = nodeList.get(p2).val;
-        nodeList.get(p2).val = temp;
+        return process(cache, s, 0, t, 0);
+    }
+
+    public int process(int[][] cache, String s, int cur, String t, int index) {
+        if (index == t.length()) {
+            return 1;
+        }
+        if (cache[cur][index] != -1)
+            return cache[cur][index];
+        int res = 0;
+        for (int i = cur; i < s.length(); i++) {
+            if (index < t.length() && s.charAt(i) == t.charAt(index)) {
+                res += process(cache, s, i + 1, t, index + 1);
+            }
+        }
+        cache[cur][index] = res;
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.numDistinct("babgbag", "bag"));
     }
 }
