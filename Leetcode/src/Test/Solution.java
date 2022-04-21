@@ -1,31 +1,37 @@
 package Test;
 
+
 import java.util.*;
 
+
 public class Solution {
-    public int numDistinct(String s, String t) {
+    public int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0)
             return 0;
-        int[][] cache = new int[s.length()][t.length()];
-        for (int i = 0; i < cache.length; i++) {
-            Arrays.fill(cache[i], -1);
-        }
-        return process(cache, s, 0, t, 0);
-    }
-
-    public int process(int[][] cache, String s, int cur, String t, int index) {
-        if (index == t.length()) {
-            return 1;
-        }
-        if (cache[cur][index] != -1)
-            return cache[cur][index];
+        HashSet<Character> hashSet = new HashSet<>();
+        int p1 = 0, p2 = 0;
         int res = 0;
-        for (int i = cur; i < s.length(); i++) {
-            if (index < t.length() && s.charAt(i) == t.charAt(index)) {
-                res += process(cache, s, i + 1, t, index + 1);
+        while (p2 < s.length()) {
+            char c = s.charAt(p2);
+            if (hashSet.contains(c)) {
+                res = Math.max(p2 - p1, res);
+                while (hashSet.contains(c)) {
+                    hashSet.remove(s.charAt(p1));
+                    p1++;
+                }
+                hashSet.add(c);
+            } else {
+                hashSet.add(c);
             }
+            p2++;
         }
-        cache[cur][index] = res;
+        res = Math.max(p2 - p1, res);
         return res;
     }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.lengthOfLongestSubstring("bbb"));
+    }
 }
+
