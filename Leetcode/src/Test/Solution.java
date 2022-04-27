@@ -10,25 +10,51 @@ public class Solution {
 
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
         Queue<Integer> goList = new LinkedList<>();
-
-        List<List<Integer>> res = new LinkedList<>();
         int m = heights.length;
         int n = heights[0].length;
-        boolean[][] visited = new boolean[m][n];
-        int mod = Math.max(m, n);
-        goList.add((m - 1) * mod);
-        goList.add(n - 1);
+        boolean[][] visited1 = new boolean[m][n];
+        int mod = Math.max(m, n) + 1;
 
-        visited[m - 1][0] = true;
-        visited[0][n - 1] = true;
-        List<Integer> temp = new ArrayList<>(2);
-        temp.add(m - 1);
-        temp.add(0);
-        res.add(temp);
-        temp = new ArrayList<>(2);
-        temp.add(0);
-        temp.add(n - 1);
-        res.add(temp);
+        // 标记所有能通往太平洋的点
+        for (int i = 0; i < m; i++) {
+            goList.add(i * mod);
+            visited1[i][0] = true;
+        }
+        for (int i = 0; i < n; i++) {
+            goList.add(i);
+            visited1[0][i] = true;
+        }
+        process(heights, goList, mod, visited1);
+        boolean[][] visited2 = new boolean[m][n];
+        goList.clear();
+        // 标记所有能通往大西洋的点
+        for (int i = 0; i < m; i++) {
+            goList.add(i * mod + n - 1);
+            visited2[i][n - 1] = true;
+        }
+        for (int i = 0; i < n - 1; i++) {
+            goList.add((m - 1) * mod + i);
+            visited2[m - 1][i] = true;
+        }
+
+        process(heights, goList, mod, visited2);
+        List<List<Integer>> res = new LinkedList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (visited1[i][j] && visited2[i][j]) {
+                    List<Integer> temp = new ArrayList<>(2);
+                    temp.add(i);
+                    temp.add(j);
+                    res.add(temp);
+                }
+            }
+        }
+        return res;
+    }
+
+    public void process(int[][] heights, Queue<Integer> goList, int mod, boolean[][] visited) {
+        int m = heights.length;
+        int n = heights[0].length;
         while (!goList.isEmpty()) {
             int size = goList.size();
             while (size-- > 0) {
@@ -41,15 +67,10 @@ public class Solution {
                     if (newX >= 0 && newX < m && newY >= 0 && newY < n && heights[newX][newY] >= heights[x][y] && !visited[newX][newY]) {
                         visited[newX][newY] = true;
                         goList.add(newX * mod + newY);
-                        temp = new ArrayList<>(2);
-                        temp.add(newX);
-                        temp.add(newY);
-                        res.add(temp);
                     }
                 }
             }
         }
-        return res;
     }
 
     public static void main(String[] args) {
