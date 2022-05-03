@@ -1,10 +1,9 @@
 package Test;
 
-import JUC.PC.A;
-import Link.Link;
 
 import java.util.*;
 
+<<<<<<< HEAD
 public class Solution {
     public int[][] position = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
@@ -69,13 +68,62 @@ public class Solution {
                         goList.add(newX * mod + newY);
                     }
                 }
+=======
+
+public class Solution {
+    public void solution(int N) {
+        int enable_print = N % 10;
+        while (N > 0) {
+            if (enable_print == 0) {
+                enable_print = (N / 10) % 10;
+            } else if (enable_print != 0) {
+                System.out.print(N % 10);
+>>>>>>> 08553653c1069b274559fd3aa8a1c0a1c810a63c
             }
+            N = N / 10;
+        }
+    }
+    public int solution(String S) {
+        // 优先在左右都有房子的地方 放水
+        char[] chars = S.toCharArray();
+        int n = chars.length;
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && i < n - 1 && chars[i] == '-' && chars[i - 1] == 'H' && chars[i + 1] == 'H') {
+                chars[i - 1] = 'N';
+                chars[i] = 'N';
+                chars[i + 1] = 'N';
+                res++;
+            }
+        }
+        // 对于现有房屋  有空就加水
+        for (int i = 0; i < n; i++) {
+            if (chars[i] == 'N' || chars[i] == '-')
+                continue;
+            // 如果左边能加
+            if (i > 0 && chars[i - 1] == '-' && chars[i] == 'H') {
+                chars[i - 1] = 'N';
+                chars[i] = 'N';
+                res++;
+            }
+            // 左边不行再考虑右边
+            else if (i < n - 1 && chars[i + 1] == '-' && chars[i] == 'H') {
+                chars[i] = 'N';
+                chars[i + 1] = 'N';
+                res++;
+            } else {
+                return -1;
+            }
+        }
+        // 检查是否还有房子没水
+        for (int i = 0; i < n; i++) {
+            if (chars[i] == 'H')
+                return -1;
         }
     }
 
     public static void main(String[] args) {
-        int[][] test = {{1, 2, 2, 3, 5}, {3, 2, 3, 4, 4}, {2, 4, 5, 3, 1}, {6, 7, 1, 4, 5}, {5, 1, 1, 2, 4}};
-        Solution main = new Solution();
-        System.out.println(main.pacificAtlantic(test));
+        Solution solution = new Solution();
+        solution.solution(11110000);
     }
 }
