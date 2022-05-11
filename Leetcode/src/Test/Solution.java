@@ -3,79 +3,110 @@ package Test;
 
 import java.util.*;
 
-class TreeNode {
+class ListNode {
     int val;
-    TreeNode left;
-    TreeNode right;
+    ListNode next;
 
-    TreeNode(int x) {
-        val = x;
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
 
-class Codec {
+class MyLinkedList {
+    public ListNode head;
+    public ListNode tail;
+    public int size;
 
-    // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
-        if (root == null)
-            return "";
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        StringBuilder sb = new StringBuilder();
-        while (!queue.isEmpty()) {
-            TreeNode cur = queue.poll();
-            if (cur == null)
-                sb.append("#,");
-            else {
-                sb.append(cur.val + ",");
-                queue.add(cur.left);
-                queue.add(cur.right);
-            }
-        }
-        sb.deleteCharAt(sb.length() - 1);
-        return sb.toString();
+    public MyLinkedList() {
+        this.head = new ListNode(-1);
+        this.tail = head;
+        this.size = 0;
     }
 
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        if (data == null || data.length() == 0)
-            return null;
-        String[] nodes = data.split(",");
-        TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        int index = 1;
-        while (!queue.isEmpty()) {
-            TreeNode cur = queue.poll();
-            if (!nodes[index].equals("#")) {
-                TreeNode left = new TreeNode(Integer.parseInt(nodes[index]));
-                cur.left = left;
-                queue.add(left);
-            }
-            index++;
-            if (!nodes[index].equals("#")) {
-                TreeNode right = new TreeNode(Integer.parseInt(nodes[index]));
-                cur.right = right;
-                queue.add(right);
-            }
-            index++;
+    public int get(int index) {
+        if (index >= size)
+            return -1;
+        ListNode cur = head.next;
+        while (index-- > 0) {
+            cur = cur.next;
         }
-        return root;
+        return cur.val;
+    }
+
+    public void addAtHead(int val) {
+        ListNode node = new ListNode(val);
+        node.next = this.head.next;
+        this.head.next = node;
+        this.size++;
+        if (node.next == null)
+            tail = node;
+    }
+
+    public void addAtTail(int val) {
+        ListNode node = new ListNode(val);
+        this.tail.next = node;
+        this.tail = node;
+        this.size++;
+    }
+
+    public void addAtIndex(int index, int val) {
+        if (index > size)
+            return;
+        else if (index == size)
+            addAtTail(val);
+        else {
+            ListNode cur = head;
+            while (index-- > 0)
+                cur = cur.next;
+            ListNode node = new ListNode(val);
+            node.next = cur.next;
+            cur.next = node;
+            size++;
+            if (node.next == null)
+                tail = node;
+        }
+
+    }
+
+    public void deleteAtIndex(int index) {
+        if (index >= size)
+            return;
+        ListNode cur = head;
+        while (index-- > 0)
+            cur = cur.next;
+        cur.next = cur.next.next;
+        size--;
+        if (cur.next == null)
+            tail = cur;
+
     }
 }
 
 public class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        head = dummy;
+        while (head.next != null) {
+            if (head.next.val == val) {
+                head.next = head.next.next;
+            } else {
+                head = head.next;
+            }
+        }
+        return dummy.next;
+    }
 
     public static void main(String[] args) {
-        TreeNode n1 = new TreeNode(2);
-        TreeNode n2 = new TreeNode(1);
-        TreeNode n3 = new TreeNode(3);
-        TreeNode n4 = new TreeNode(4);
-        n1.left = n2;
-        n1.right = n3;
-        n3.right = n4;
-        String serialize = new Codec().serialize(n1);
-        System.out.println(serialize);
+
     }
 
 }
