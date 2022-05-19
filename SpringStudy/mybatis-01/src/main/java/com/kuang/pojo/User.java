@@ -2,7 +2,7 @@ package com.kuang.pojo;
 
 // 实体类
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String pwd;
 
@@ -19,7 +19,7 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String pwd) {
+    public User(Integer id, String name, String pwd) {
         this.id = id;
         this.name = name;
         this.pwd = pwd;

@@ -3,9 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace 绑定一个对于的Dao/Mapper接口-->
-<mapper namespace="com.kuang.dao.UserDao">
+<mapper namespace="com.kuang.dao.UserMapper">
     <!--id 对应方法名  resultType 返回类型，只写集合中的类名-->
     <select id="getUserList" resultType="com.kuang.pojo.User">
         select * from mybatis.user;
     </select>
+    <select id="getUserById" resultType="com.kuang.pojo.User" parameterType="int">
+        select * from mybatis.user where id=#{id};
+    </select>
+    <insert id="addUser" parameterType="com.kuang.pojo.User" >
+        insert into mybatis.user(id, name, pwd) VALUE (0,#{name},#{pwd});
+    </insert>
 </mapper>

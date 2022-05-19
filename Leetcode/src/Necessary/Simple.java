@@ -68,9 +68,6 @@ class StaticClass {
         private static StaticClass instance = new StaticClass();
     }
 
-    private StaticClass() {
-    }
-
     public static StaticClass getInstance() {
         return simple.instance;
     }
