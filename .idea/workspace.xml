@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6adb8ef-dfe2-43f4-8d07-03d8b1b4ea92" name="Default Changelist" comment="" />
+    <list default="true" id="65955630-1295-4160-9490-2c96479115a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/QqRobotChannel/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QqRobotChannel/src/main/java/example2.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="29NIzjVXeUmQsd5WHkKiLikHIer" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29O2pySQUkXR0H4YVLZInyeCXAq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -17,22 +23,29 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MyWeb" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b6adb8ef-dfe2-43f4-8d07-03d8b1b4ea92" name="Default Changelist" comment="" />
-      <created>1652947380951</created>
+      <changelist id="65955630-1295-4160-9490-2c96479115a3" name="Default Changelist" comment="" />
+      <created>1652969997850</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652947380951</updated>
-      <workItem from="1652947388387" duration="99000" />
+      <updated>1652969997850</updated>
+      <workItem from="1652969999156" duration="22000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1652970019091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1652970019091" />
   </component>
 </project>
