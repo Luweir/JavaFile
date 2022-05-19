@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MyWeb" />
         <module name="_05_test" />
+        <module name="QqRobotChannel" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MyWeb" target="1.8" />
+      <module name="QqRobotChannel" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
