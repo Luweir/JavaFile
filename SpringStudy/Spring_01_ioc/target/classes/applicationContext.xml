@@ -10,6 +10,5 @@
     <!--指定要扫描的包  这个包下的注解就会生效-->
     <context:component-scan base-package="com.luweir.pojo"/>
     <context:annotation-config/>
-    <!--    <bean id="user" class="com.luweir.pojo.User"/>-->
-
+    <bean id="user" class="com.luweir.pojo.User"/>
 </beans>
