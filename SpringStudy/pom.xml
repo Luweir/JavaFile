@@ -12,6 +12,7 @@
     <modules>
         <module>Spring_01_ioc</module>
         <module>mybatis-01</module>
+        <module>SpringMVC-demo01</module>
     </modules>
 
     <properties>
