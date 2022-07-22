@@ -1,0 +1,46 @@
+body {
+    background-color: #f5f6f7;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#main{
+    width: 1400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+.top_search_bar {
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.top_search_bar div {
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+table {
+    width: 1200px;
+    margin: 20px auto;
+    border: 1px #d2d4d6 solid;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: #f1f5f9;
+}
+
+table tr {
+    height: 40px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+table td,
+th {
+    border: 1px #d2d4d6 solid;
+}

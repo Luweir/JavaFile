@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="modelTest">
+    <output-path>$PROJECT_DIR$/out/artifacts/modelTest</output-path>
+    <root id="archive" name="modelTest.war">
+      <element id="dir-copy" path="$PROJECT_DIR$/modelManagementSystem/web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="modelManagementSystem" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
